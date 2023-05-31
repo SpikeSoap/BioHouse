@@ -44,8 +44,10 @@ let insertarimg;
         hacerclic[i].addEventListener ('click', () => {
             varquerecogevalordelbotonmenu=valordeetiquetap[i].textContent
             localStorage.setItem("contenido", JSON.stringify(varquerecogevalordelbotonmenu));
-            // localStorage.setItem("imagenes", JSON.stringify(arrayimg));
+            localStorage.setItem("imagenes", JSON.stringify(arrayimg));
             location.href='html/pagina-menus.html'
+
+
           
         }) 
         }
@@ -57,10 +59,38 @@ let insertarimg;
             insertarimg=abc;
              
         if(abc=='Sin alergias'){
+            for (let i = 1; i<=16 ; i++){
+                arrayimg.push("/images/sinalergias/plato"+" " +"(" + i + ").png") 
+            }
         insertar() 
     }
-    else{
-        console.log('hay probllemas')
+    if (abc=='Sin gluten'){
+        for (let i = 1; i<=16 ; i++){
+            arrayimg.push("/images/singluten/sg" + i +".jpg") 
+        }
+        insertar() 
+       
+    }
+    if (abc=='Sin lactosa'){
+        for (let i = 1; i<=16 ; i++){
+            arrayimg.push("/images/sinlactosa/sl" + i +".jpg") 
+        }
+        insertar() 
+       
+    }
+    if (abc=='Sin colesterol'){
+        for (let i = 1; i<=16 ; i++){
+            arrayimg.push("/images/sincolesterol/sc" + i +".jpg") 
+        }
+        insertar() 
+       
+    }
+    if (abc=='Diabéticos'){
+        for (let i = 1; i<=16 ; i++){
+            arrayimg.push("/images/diabeticos/db" + i +".jpg") 
+        }
+        insertar() 
+       
     }
 }
 /////////////////////// funcion para insertar los diferentes menus//////////////////////////////////////////////
@@ -78,9 +108,7 @@ let insertarimg;
         for(let i= 0; i < arrayimg.length; i++){
         }
     
-        for (let i = 1; i<=16 ; i++){
-            arrayimg.push("/images/menus/plato"+" " +"(" + i + ").png") 
-        }
+      
 
 
    
