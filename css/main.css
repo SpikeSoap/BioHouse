@@ -121,3 +121,63 @@
     height: 80vh;
     background-color: aquamarine;
 } */
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////PAGINA DE MENUS/////////////////////////////////////////////////////////////////*/
+
+.contenedor-menus{
+    width: 100%;
+    margin-top: 3%;
+    background-color: #F3FADC;
+    padding-top: 3%;
+}
+
+.lista-verde{
+    width: 100%;
+    height: 15VH;
+    background-color: #34571A;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-verde p{
+    font-size: 2rem;
+}
+
+.articulos-menus{
+    width: 100%;
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+}
+
+.cont-de-menus{
+    padding: 3%;
+    margin: 8%;
+    height: 60vh;
+    box-shadow: 1px 0 2px 1px grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cont-de-menus figure{
+    height: 59%;
+    display: flex;
+    justify-content: center;
+  
+}
+.cont-de-menus img{
+    border-radius: 50%;
+    width: 90%;
+}
+.cont-de-menus p{
+    padding: 5%;
+   background-color: #E0FC00;
+    height: 38%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
