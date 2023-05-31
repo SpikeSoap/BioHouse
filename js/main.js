@@ -35,15 +35,15 @@ const imagenvacia=document.querySelectorAll('.imagen');
 const valordeetiquetap=document.querySelectorAll('.mostrarvalor')
 
 var arrayimg=new Array();
-let prua1;
+let varquerecogevalordelbotonmenu;
 let insertarimg;
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
 
     for(let i= 0; i < hacerclic.length; i++){
         hacerclic[i].addEventListener ('click', () => {
-            prua1=valordeetiquetap[i].textContent
-            localStorage.setItem("contenido", JSON.stringify(prua1));
+            varquerecogevalordelbotonmenu=valordeetiquetap[i].textContent
+            localStorage.setItem("contenido", JSON.stringify(varquerecogevalordelbotonmenu));
             // localStorage.setItem("imagenes", JSON.stringify(arrayimg));
             location.href='html/pagina-menus.html'
           
