@@ -68,6 +68,8 @@
     border: 1px solid grey;
 }
 
+/*main*/
+
 .main-general{
     width: 95%;
     margin: auto;
@@ -111,16 +113,34 @@
     background-color: #F3FADC;
 }
 
-.filtro-comida{
+.comida-row{
+    width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: space-evenly;
 }
 
-/* .cargar-platos{
-    width: 80%;
-    height: 80vh;
-    background-color: aquamarine;
-} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,4 +200,34 @@
    justify-content: center;
    align-items: center;
    text-align: center;
+}
+.plato-filtro{
+    width: 18%;
+    margin-block: 5vh;
+}
+.plato-filtro a{
+    display: flex;
+    flex-flow: column;
+    place-items: center;
+    text-decoration: none;
+}
+
+.foto-plato{
+    width: 100%;
+}
+
+.cartel-alergias{
+    width: 60%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #34771A;
+    border-radius: 15vw;
+}
+
+.cartel-alergias > p{
+    color: #FFF;
+    font-size: 1.5vw;
+
 }
