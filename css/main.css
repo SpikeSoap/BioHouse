@@ -152,6 +152,12 @@
     background-color: #F3FADC;
     padding-top: 3%;
 }
+.contenedor-menus h3{
+    color:rgb(95, 94, 94);
+    font-size: 1.5rem;
+    padding-left: 2%;
+    font-style: italic;
+}
 
 .lista-verde{
     width: 100%;
@@ -161,6 +167,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 3%;
 }
 
 .lista-verde p{
@@ -172,6 +179,7 @@
     display: grid;
     grid-template-columns:repeat(4, 1fr);
 }
+
 
 .cont-de-menus{
     padding: 3%;
@@ -191,6 +199,15 @@
 .cont-de-menus img{
     border-radius: 50%;
     width: 90%;
+    transition: 1s;
+}
+
+.cont-de-menus img:hover{
+    cursor: pointer;
+    scale:  150%;
+    transform: rotateX(10deg);
+    transform: rotateY(10deg);
+    transform: rotateZ(9deg);
 }
 .cont-de-menus p{
     padding: 5%;
