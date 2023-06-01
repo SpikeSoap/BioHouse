@@ -19,6 +19,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    background-color: white;
 }
 
 .navegador {
@@ -83,6 +84,8 @@
 .image-hero{
     width: 100%;
     position: relative;
+    z-index: -100;
+    margin-top: 10%;
 }
 
 #foto-hero{
