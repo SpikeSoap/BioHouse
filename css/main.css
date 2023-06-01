@@ -22,7 +22,7 @@
 }
 
 .navegador {
-    width: 30%;
+    width: 33%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,20 +49,26 @@
 
 
 .fig-logo {
-    width: 10%;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#logo {
-    width: 100%;
+.logo {
+    width: 25%;
 }
 
-.search-cabe {
-    width: 30%;
+.cont-input {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-nav {
+    width: 50%;
     height: 5vh;
-    margin-top: 4%;
     padding-inline: 2%;
     border-radius: 5vw;
     border: 1px solid grey;
