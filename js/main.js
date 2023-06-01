@@ -31,10 +31,10 @@ const clicimagen=document.querySelectorAll('.imagen');
 
 
 
-var arrayimg=new Array();
+let arrayimg=new Array();
 let varquerecogevalordelbotonmenu;
 let insertarimg;
-
+let arrayprecios=new Array()
 
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
@@ -53,6 +53,8 @@ let insertarimg;
         function empezar(){
             let abc=JSON.parse(localStorage.getItem("contenido"));
             insertarimg=abc;
+            asigplatos()
+            console.log(arrayprecios);
              
         if(abc=='Sin alergias'){
             for (let i = 1; i<=16 ; i++){
@@ -116,7 +118,7 @@ let insertarimg;
                     let contcarrito=document.getElementById('carrito')
                     if( contcarrito.style.width=="0%"){
                         contcarrito.style.width="20%";  
-                        
+                      
                     }
                     
                 })
@@ -146,4 +148,8 @@ let productos  = [
     {nombre: "VIEIRAS, PIMI TOS DE BACON, COCO SALTEADO Y COLIFLOR",precio:17 },
     ] 
 
-
+    function asigplatos(){   
+        let select= productos.filter(a => a.precio >'10'& a.precio<'17');
+        for(let i=0; i<select.length; i++){
+         arrayprecios.push (select[i].nombre)
+     }} 
