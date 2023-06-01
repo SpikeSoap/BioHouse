@@ -127,9 +127,10 @@
 
 .comida-hero{
     width: 100%;
-    height: 120vh;
+    height: 100vh;
     margin-top: 3%;
     background-color: #F3FADC;
+    margin-bottom: 2%;
 }
 
 .comida-row{
