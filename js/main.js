@@ -77,7 +77,7 @@ let insertarimg;
     if (abc=='Sin colesterol'){
         for (let i = 1; i<=16 ; i++){
             arrayimg.push("../images/sincolesterol/sc" + i +".jpg") 
-            
+
         }
         insertar() 
        
@@ -143,7 +143,7 @@ let productos  = [
     {nombre: "ARROZ CON POLLO",precio:16 },
     {nombre: "FILETE DE POLLO, CALABAZA INFUSIONADA CON ANÍS ESTRELLADO Y CASTAÑAS.",precio:12 },
     {nombre: "PARMENTIER DE PALETILLA DE CORDERO Y BONIATO, DÁTILES Y NUECES, SALSA DE SÉSAMO NEGRO",precio:29 },
-    {nombre: "VIEIRAS, PIMIENTOS DEL PIQUILLO CON TROCITOS DE BACON, COCO SALTEADO Y COLIFLOR",precio:17 },
+    {nombre: "VIEIRAS, PIMI TOS DE BACON, COCO SALTEADO Y COLIFLOR",precio:17 },
     ] 
 
 
