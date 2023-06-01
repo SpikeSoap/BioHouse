@@ -114,7 +114,7 @@ let insertarimg;
                 clicimagen[i].addEventListener("click", () => {
                     let contcarrito=document.getElementById('carrito')
                     if( contcarrito.style.width=="0%"){
-                        contcarrito.style.width="10%";  
+                        contcarrito.style.width="20%";  
                         
                     }
                     

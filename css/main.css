@@ -280,10 +280,7 @@
 
 .cont-de-menus img:hover{
     cursor: pointer;
-    scale:  150%;
-    transform: rotateX(10deg);
-    transform: rotateY(10deg);
-    transform: rotateZ(9deg);
+   
 }
 .cont-de-menus p{
     padding: 5%;
@@ -322,11 +319,10 @@
 .cartel-alergias p{
     color: #FFF;
     font-size: 1.5vw;
-
 }
 
 #carrito{
     height: 100vh;
     background-color: #955454;
-    transition: 2s;
+    transition: 1s;
 }
