@@ -87,6 +87,10 @@
     width: 95%;
     margin: auto;
 }
+#main-menus{
+    margin-top: 10%;
+}
+
 .image-hero{
     width: 100%;
     position: relative;
@@ -322,7 +326,8 @@
 }
 
 #carrito{
-    height: 100vh;
-    background-color: #955454;
+    position: sticky;
+    top: 19vh;
+    height: 81vh;
     transition: 1s;
 }
