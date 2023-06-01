@@ -77,6 +77,7 @@ let insertarimg;
     if (abc=='Sin colesterol'){
         for (let i = 1; i<=16 ; i++){
             arrayimg.push("../images/sincolesterol/sc" + i +".jpg") 
+            
         }
         insertar() 
        
