@@ -329,6 +329,5 @@
     position: sticky;
     top: 19vh;
     height: 81vh;
-    border: 1px solid black;
     transition: 1s;
 }
