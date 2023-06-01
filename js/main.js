@@ -120,3 +120,54 @@ let insertarimg;
                     
                 })
             }
+
+            /////////////////////////////////////////////arrays de objetos/////////////////////////////////////////
+
+            
+let productos  = [
+    {
+        nombre: "CHILI SIN CARNE (VEGGIE)",precio:10 
+    },  {
+        nombre: "LOMO DE BACALAO, CREMA DE SALMÓN AHUMADO, FLAN DE BRÓCOLI Y HABAS DE SOJA",precio:20 
+    },  {
+        nombre: "ESTOFADO DE CARRILLERA DE TERNERA Y VERDURAS DE INVIERNO",precio:12 
+    },  {
+        nombre: "FILETE DE SALMÓN, ARROZ BASMATI SALTEADO Y SALSA DE LIMÓN CONFITADO Y JENGIBRE",precio:15 
+    },  {
+        nombre: "PENNE CON SALMÓN, BRÓCOLI, TOMATES SECOS, CREMA DE HINOJO",precio:10 
+    },  {
+        nombre: "SURONCHU DEL MAR",precio:14 
+    },  {
+        nombre: "DÚO DE ALBÓNDIGAS DE TERNERA CON ARROZ BLANCO Y SALVAJE Y COMPOTA DE TOMATE",precio:18 
+    },  {  
+        nombre: "FILETE DE POLLO MARINADO EN CURRY ROJO - LECHE DE COCO Y SU TRÍO DE ARROZ",precio:21 
+    },  {
+        nombre: "LASAÑA DE DOS SALMONES",precio:13 
+    },  {
+        nombre: "LOMO DE SALMÓN CON PIMENTÓN, DÚO DE LENTEJAS CON ZANAHORIA Y CEBOLLA",precio:10 
+    },  {
+        nombre: "NOIX DE SAINT JACQUES, PIQUILLOS AUX LARDONS, SAUTÉ DE HARICOTS COCO & CHOU-FLEUR",precio:19 
+    },  {
+        nombre: "FILETE DE POLLO, PURÉ DE PATATAS Y ESPINACAS",precio:22 
+    },
+    {
+        nombre: "TAGINE DE VERDURAS MARROQUÍ CON ALBÓNDIGAS DE TERNERA",precio:27
+    },
+    {
+        nombre: "PAELLA CON POLLO Y MARISCOS",precio:25 
+    },
+    {
+        nombre: "ARROZ CON POLLO",precio:16 
+    },
+    {
+        nombre: "FILETE DE POLLO, CALABAZA INFUSIONADA CON ANÍS ESTRELLADO Y CASTAÑAS.",precio:12 
+    },
+    {
+        nombre: "PARMENTIER DE PALETILLA DE CORDERO Y BONIATO, DÁTILES Y NUECES, SALSA DE SÉSAMO NEGRO",precio:29 
+    },
+    {
+        nombre: "VIEIRAS, PIMIENTOS DEL PIQUILLO CON TROCITOS DE BACON, COCO SALTEADO Y COLIFLOR",precio:17 
+    },
+] 
+
+
