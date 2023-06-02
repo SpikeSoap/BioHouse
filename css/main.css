@@ -289,8 +289,8 @@
 }
 .cont-de-menus p{
     padding: 5%;
-   background-color: #E0FC00;
-    height: 38%;
+   background-color: #34571A;
+    height: 28%;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -317,11 +317,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #34771A;
+    background-color: #34571A;
     border-radius: 15vw;
 }
 
 .cartel-alergias p{
+    background-color: #34571A;
     color: #FFF;
     font-size: 1.5vw;
 }
@@ -331,4 +332,10 @@
     top: 19vh;
     height: 81vh;
     transition: 1s;
+}
+.precio{
+    background-color: #FFF;
+    height: 5vh;
+    font-weight: bold;
+    text-align: center;
 }
