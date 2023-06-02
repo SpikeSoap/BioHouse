@@ -86,7 +86,7 @@
 
 .main-general{
     width: 95%;
-    margin: auto;
+    margin:0 auto;
 }
 #main-menus{
     margin-top: 10%;
@@ -329,11 +329,11 @@
 }
 
 #carrito{
-    width: -0%;
+    border: 0.2px solid gray;
     position: sticky;
     top: 0%;
     height: 100vh;
-    transition: 1s;
+    transition: 0.8s;
 }
 
 .precio{
@@ -406,7 +406,8 @@
     #btc-carrito{
         width: 80%;
         height: 3vh;
-border: 1px solid gray;
-background-color: white;
-border-radius: 2vw;
+        border: 1px solid gray;
+        background-color: white;
+        border-radius: 2vw;
     }
+   

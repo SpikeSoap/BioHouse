@@ -162,9 +162,10 @@ let cantidaddeplatosseleccionados;
                     for(let i=0; i<preciosMenu.length; i++){
                         
                     }
-                    if( contcarrito.style.display=="none" ){
-                        contcarrito.style.display="block";  
+                    if( contcarrito.style.width=="0%" ){
+                        contcarrito.style.visibility="visible"
                         contcarrito.style.width="20%"
+                        visualizar.style.display="block"
                         
                     }
 
