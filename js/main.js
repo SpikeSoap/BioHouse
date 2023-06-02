@@ -65,6 +65,9 @@ let varquerecogevalordelbotonmenu;
 let insertarimg;
 let arrayprecios=new Array()
 let arrayplatos=new Array()
+let imagendelbotonmenu;
+let preciodelbotonmenu;
+let cantidaddeplatosseleccionados;
 
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
@@ -86,9 +89,6 @@ let arrayplatos=new Array()
 
             asigprecioplatos()
             asigdescplatos()
-
-            console.log(arrayprecios);
-            console.log(arrayplatos);
              
         if(abc=='Sin alergias'){
             for (let i = 1; i<=16 ; i++){
@@ -151,14 +151,28 @@ let arrayplatos=new Array()
       
             for(let i= 0; i < clicimagen.length; i++){
                 clicimagen[i].addEventListener("click", () => {
+                       imagendelbotonmenu=clicimagen[i].src;
+                       cantidaddeplatosseleccionados=preciosMenu[i].textContent
+                
+    
                     let contcarrito=document.getElementById('carrito')
-                    if( contcarrito.style.width=="0%"){
-                        contcarrito.style.width="20%";  
-                      
+                    let visualizar=document.getElementById('inf-primerafila-cart')
+                    
+
+                    for(let i=0; i<preciosMenu.length; i++){
+                        
                     }
+                    if( contcarrito.style.display=="none" ){
+                        contcarrito.style.display="block";  
+                        contcarrito.style.width="20%"
+                        
+                    }
+
                     createcarro()
                 })
             }
+
+            
 
             ////////////////////////////////////arrays de objetos yusra/////////////////////////////////////////
 
@@ -198,7 +212,7 @@ let productos  = [
 
      let tituloplatos = document.querySelectorAll(".desc-menu");
      let preciosMenu = document.querySelectorAll(".precio")
-    let divisa=' €'
+    
 
      function recorrerplatos(){
         for(let i=0; i<tituloplatos.length; i++){
@@ -208,9 +222,15 @@ let productos  = [
 
      function recorrerprecios(){
         for(let i=0; i<preciosMenu.length; i++){
-            preciosMenu[i].innerHTML = arrayprecios[i]+divisa
+            preciosMenu[i].innerHTML = arrayprecios[i]+' '+ '€'
         }
      }
+     function recprecioalhacerclick(){
+       
+     }
+
+
+     
      ////////carito/////////
      let shopping = document.querySelector(".menu-shop")
 
@@ -219,21 +239,39 @@ let productos  = [
       let pasta
       let cantidad
       let borrar
+      let div2
 
         let div = document.createElement("div")
         div.className = "product-shop"
-        div.innerHTML = 'ghjklyub'
         shopping.appendChild(div)
 
 
         imagen =document.createElement("img")
         imagen.className = "img-select"
-        imagen.src = ""
+        imagen.src = imagendelbotonmenu
         div.appendChild(imagen)
 
         pasta = document.createElement("span")
         pasta.className = "precio-art-carrito"
-        pasta.textContent = "0.00"
+        pasta.textContent = cantidaddeplatosseleccionados
         div.appendChild(pasta)
+
+        div2 = document.createElement("div")
+        div2.className = "botones"
+        div.appendChild(div2)
+ 
+        // aqui el select
+
+
+        // pasta = document.createElement("span")
+        // pasta.className = "precio-art-carrito"
+        // pasta.textContent = '';
+        // div2.appendChild(pasta)
+
+       borrar=document.createElement('img')
+       borrar.className='btn-clear'
+       borrar.src='../images/papelera.png'
+       div2.appendChild(borrar)
+
 
 }
