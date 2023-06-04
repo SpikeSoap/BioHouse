@@ -261,13 +261,20 @@ let productos  = [
         div2.className = "botones"
         div.appendChild(div2)
  
-        // aqui el select
+     
+    cantidad = document.createElement("select");
+    cantidad.className = "Cant-prod";
+    cantidad.textContent = '';
+    div2.appendChild(cantidad);
 
-
-        // pasta = document.createElement("span")
-        // pasta.className = "precio-art-carrito"
-        // pasta.textContent = '';
-        // div2.appendChild(pasta)
+    for (let i = 0; i <= 5; i++) {
+        console.log("he entrau");
+        let option = document.createElement("option");
+        option.className = "cant-opt" + i;
+        option.value = i;
+        option.textContent = i;
+        cantidad.appendChild(option);
+    }
 
        borrar=document.createElement('img')
        borrar.className='btn-clear'

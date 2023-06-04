@@ -364,7 +364,7 @@
     }
 
     .img-select{
-        width: 100%;
+        width: 80%;
         height: 11vh;
         margin-bottom: 8%;
     }
@@ -392,9 +392,11 @@
     }
 
     .botones{
+        margin-top: 3%;
         width: 80%;
         height: 5vh;
         display: flex;
+        justify-content: space-around;
     }
 
     .btn-clear{
@@ -409,5 +411,12 @@
         border: 1px solid gray;
         background-color: white;
         border-radius: 2vw;
+    }
+    .Cant-prod{
+        border: 0.5 px solid  #34571A;
+        border-radius: 5px;
+        width: 50%;
+        height: 4vh;
+        padding: 5%;
     }
    
