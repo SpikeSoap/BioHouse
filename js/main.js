@@ -59,7 +59,7 @@ const valordeetiquetap=document.querySelectorAll('.mostrarvalor');
 const clicimagen=document.querySelectorAll('.imagen');
 const tituloplatos = document.querySelectorAll(".desc-menu");
 const preciosMenu = document.querySelectorAll(".precio");
-
+const recorrercarrito = document.getElementById("carrito");
 
 
 
@@ -284,5 +284,10 @@ let productos  = [
        borrar.src='../images/papelera.png'
        div2.appendChild(borrar)
 
+
+       carrito.addEventListener('click', e =>{
+        if(e.target==borrar)
+        shopping.removeChild(div)
+    })
 }
 
