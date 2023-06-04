@@ -57,6 +57,9 @@ const hacerclic=document.querySelectorAll('.plato-filtro');
 const imagenvacia=document.querySelectorAll('.imagen');
 const valordeetiquetap=document.querySelectorAll('.mostrarvalor');
 const clicimagen=document.querySelectorAll('.imagen');
+let tituloplatos = document.querySelectorAll(".desc-menu");
+let preciosMenu = document.querySelectorAll(".precio");
+
 
 
 
@@ -142,6 +145,8 @@ let cantidaddeplatosseleccionados;
             for(let i= 0; i < valordeetiquetap.length; i++){
             }
         })
+
+      
         
         addEventListener("load" , () => {
             for(let i= 0; i < arrayimg.length; i++){
@@ -211,9 +216,6 @@ let productos  = [
          arrayplatos.push (select[i].nombre)
      }} 
 
-     let tituloplatos = document.querySelectorAll(".desc-menu");
-     let preciosMenu = document.querySelectorAll(".precio")
-    
 
      function recorrerplatos(){
         for(let i=0; i<tituloplatos.length; i++){
@@ -268,7 +270,6 @@ let productos  = [
     div2.appendChild(cantidad);
 
     for (let i = 0; i <= 5; i++) {
-        console.log("he entrau");
         let option = document.createElement("option");
         option.className = "cant-opt" + i;
         option.value = i;
@@ -281,5 +282,5 @@ let productos  = [
        borrar.src='../images/papelera.png'
        div2.appendChild(borrar)
 
-
 }
+
