@@ -60,6 +60,7 @@ const clicimagen=document.querySelectorAll('.imagen');
 const tituloplatos = document.querySelectorAll(".desc-menu");
 const preciosMenu = document.querySelectorAll(".precio");
 const recorrercarrito = document.getElementById("carrito");
+const shopping = document.querySelector(".menu-shop")
 
 
 
@@ -236,8 +237,8 @@ let productos  = [
 
 
      
-     ////////carito/////////
-     let shopping = document.querySelector(".menu-shop")
+     ////////carrito crear y eliminar/////////
+     
 
      function createcarro(){
       let imagen
