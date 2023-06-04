@@ -57,8 +57,8 @@ const hacerclic=document.querySelectorAll('.plato-filtro');
 const imagenvacia=document.querySelectorAll('.imagen');
 const valordeetiquetap=document.querySelectorAll('.mostrarvalor');
 const clicimagen=document.querySelectorAll('.imagen');
-let tituloplatos = document.querySelectorAll(".desc-menu");
-let preciosMenu = document.querySelectorAll(".precio");
+const tituloplatos = document.querySelectorAll(".desc-menu");
+const preciosMenu = document.querySelectorAll(".precio");
 
 
 
@@ -107,13 +107,15 @@ let cantidaddeplatosseleccionados;
         }
         insertar() 
         recorrerplatos()
+        recorrerprecios()
     }
     if (abc=='Sin lactosa'){
         for (let i = 1; i<=16 ; i++){
             arrayimg.push("../images/sinlactosa/sl" + i +".jpg") 
         }
         insertar() 
-       
+        recorrerplatos()
+        recorrerprecios()
     }
     if (abc=='Sin colesterol'){
         for (let i = 1; i<=16 ; i++){
@@ -122,6 +124,7 @@ let cantidaddeplatosseleccionados;
         }
         insertar() 
         recorrerplatos()
+        recorrerprecios()
     }
     if (abc=='Diabéticos'){
         for (let i = 1; i<=16 ; i++){
@@ -129,6 +132,7 @@ let cantidaddeplatosseleccionados;
         }
         insertar() 
         recorrerplatos()
+        recorrerprecios()
     }
 }
 /////////////////////// funcion para insertar los diferentes menus//////////////////////////////////////////////
@@ -228,9 +232,7 @@ let productos  = [
             preciosMenu[i].innerHTML = arrayprecios[i]+' '+ '€'
         }
      }
-     function recprecioalhacerclick(){
-       
-     }
+    
 
 
      
