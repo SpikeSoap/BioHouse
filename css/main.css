@@ -272,6 +272,14 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.cont-de-menus div{
+  
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
 .cont-de-menus figure{
     height: 59%;
     display: flex;
@@ -333,8 +341,10 @@
     position: sticky;
     top: 0%;
     height: 100vh;
+    overflow: auto;
     transition: 0.8s;
 }
+
 
 .precio{
     background-color: #FFF;
