@@ -300,11 +300,14 @@ function createcarro() {
         if (e.target == borrar) {
             shopping.removeChild(div)
         }
+    })
+
+    carrito.addEventListener('change', e => {
         if (e.target == cantidad) {
             multiplicar()
         }
         pasta.textContent = preciodelspandelcarrito + '€';
-        
+       
     })
     
     function multiplicar() {
