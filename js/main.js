@@ -321,15 +321,15 @@ function createcarro() {
 
     carrito.addEventListener('change', e => {
         if (e.target == cantidad) {
-            multiplicar()
+            
+                pasta.textContent=(parseFloat(cantidad.value) * parseFloat(pasta.textContent)+ '€');
+            
         }
-        pasta.textContent = preciodelspandelcarrito + '€';
+       
        
     })
     
-    function multiplicar() {
-        preciodelspandelcarrito=(parseFloat(cantidad.value) * parseFloat(traerPrecio));
-    }
+    
 }
 
 
