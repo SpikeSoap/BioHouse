@@ -346,8 +346,10 @@ function sumarItemCart() {
     let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
     let filtrisrc = traerCarrito.filter(a => a.srcimagen)
     let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
+    // let suma=traerCarrito
     
-    console.log(sacarPrecioTotal)
+    let sumartotal=sacarPrecioTotal.reduce((a,b)=>a + b.precio ,0) ;
+    console.log(sumartotal)
     
    
     
