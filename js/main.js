@@ -55,6 +55,10 @@ let menuSelected=[];
 let menuAddLocal=[];
 let cantidad=1
 
+let traerPrecio;
+let traerSrc;
+let traerCantidad;
+
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
 
@@ -150,12 +154,12 @@ for (let i = 0; i < clicimagen.length; i++) {
 
        menuSelected=[];
        arrayblanco()
-       
-       
-        menuAddLocal.push({precio: menuSelected[0], srcimagen:menuSelected[1],cantidad:menuSelected[2]})
-        localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
-       
-        console.log(menuSelected)
+       guardarenlocal()
+
+       traerDelLocal()
+console.log(traerPrecio)
+console.log(traerSrc)
+console.log(traerCantidad)
 
 
 
@@ -177,6 +181,27 @@ for (let i = 0; i < clicimagen.length; i++) {
     })
 }
 
+
+///////////////////////////////trabajar con los datos para el carro 
+function arrayblanco(){
+    menuSelected=[ precioDeMenus ,  imagendelbotonmenu ,cantidad]
+}
+
+function guardarenlocal(){
+    menuAddLocal.push({precio: menuSelected[0], srcimagen:menuSelected[1],cantidad:menuSelected[2]})
+    localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
+}
+
+function traerDelLocal(){
+    let sacarUltimoValor
+let arrayDelLocal = JSON.parse(localStorage.getItem('contenido'));
+sacarUltimoValor=arrayDelLocal[arrayDelLocal.length-1];
+
+traerPrecio=sacarUltimoValor.precio;
+traerSrc=sacarUltimoValor.srcimagen;
+traerCantidad=sacarUltimoValor.cantidad
+
+}
 
 
 ////////////////////////////////////arrays de objetos yusra/////////////////////////////////////////
@@ -315,7 +340,8 @@ function createcarro() {
 
 
 
-///////////////////////////////trabajar con los datos para el carro
-function arrayblanco(){
-    menuSelected=[ precioDeMenus ,  imagendelbotonmenu ,cantidad]
-}
+
+
+
+
+
