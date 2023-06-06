@@ -429,3 +429,28 @@
         padding: 5%;
     }
    
+
+    /* factura.html */
+.principal-factura{
+    width: 100%;
+    text-align: center;
+    margin-block: 2%;
+}
+
+.pedido{
+    margin: auto;
+    width: 85%;
+    margin-bottom: 2%;
+}
+
+.list-pedido{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    height: 50vh;
+}
+
+.resul-des, .resul-precio{
+    width: 49%;
+    height: 100%;
+}
