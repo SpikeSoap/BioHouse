@@ -291,10 +291,7 @@
     transition: 1s;
 }
 
-.cont-de-menus img:hover{
-    cursor: pointer;
-   
-}
+
 .cont-de-menus p{
     padding: 5%;
    background-color: #34571A;

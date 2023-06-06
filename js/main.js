@@ -29,10 +29,9 @@ addEventListener("wheel", (e) => {
 
 ///////////////////////////////////////alex programation////////////////////////////////////////////////
 
-const hacerclic = document.querySelectorAll('.plato-filtro');
-const imagenvacia = document.querySelectorAll('.imagen');
+const clicBtnMenu = document.querySelectorAll('.plato-filtro');
+const figPagMenu = document.querySelectorAll('.imagen');
 const valordeetiquetap = document.querySelectorAll('.mostrarvalor');
-const clicimagen = document.querySelectorAll('.imagen');
 const tituloplatos = document.querySelectorAll(".desc-menu");
 const preciosMenu = document.querySelectorAll(".precio");
 const recorrercarrito = document.getElementById("carrito");
@@ -64,8 +63,8 @@ let traerCantidad;
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
 
-for (let i = 0; i < hacerclic.length; i++) {
-    hacerclic[i].addEventListener('click', () => {
+for (let i = 0; i < clicBtnMenu.length; i++) {
+    clicBtnMenu[i].addEventListener('click', () => {
         getValueBtnMenu = valordeetiquetap[i].textContent
         localStorage.setItem("contenido", JSON.stringify(getValueBtnMenu));
         localStorage.setItem("imagenes", JSON.stringify(arrayimg));
@@ -130,8 +129,8 @@ function empezar() {
 
 function insertar() {
     let prueba = JSON.parse(localStorage.getItem("imagenes"));
-    for (let i = 0; i < imagenvacia.length; i++) {
-        imagenvacia[i].src = prueba[i]
+    for (let i = 0; i < figPagMenu.length; i++) {
+        figPagMenu[i].src = prueba[i]
     }
     for (let i = 0; i < prueba.length; i++) {
     }
@@ -144,7 +143,7 @@ function insertar() {
 
 for (let i = 0; i < addToCart.length; i++) {
     addToCart[i].addEventListener("click", () => {
-        imagendelbotonmenu = clicimagen[i].src;//esta es la ruta del src de la imagen del plato seleccionado
+        imagendelbotonmenu = figPagMenu[i].src;//esta es la ruta del src de la imagen del plato seleccionado
         precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
 
        menuSelected=[];
