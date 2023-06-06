@@ -37,8 +37,9 @@ const tituloplatos = document.querySelectorAll(".desc-menu");
 const preciosMenu = document.querySelectorAll(".precio");
 const recorrercarrito = document.getElementById("carrito");
 const shopping = document.querySelector(".menu-shop")
+const listPedido = document.querySelector(".list-pedido");
 const totalgeneral = document.getElementById('monto-total')
-const BTNAGREGARALCART=document.querySelectorAll('.btn-agregar-car'); 
+const BTNAGREGARALCART = document.querySelectorAll('.btn-agregar-car');
 
 
 
@@ -51,10 +52,10 @@ let arrayplatos = new Array()
 let imagendelbotonmenu;
 let preciodelbotonmenu;
 let precioDeMenus = 0;
-let contador=0
-let menuSelected=[];
-let menuAddLocal=[];
-let cantidad=1
+let contador = 0
+let menuSelected = [];
+let menuAddLocal = [];
+let cantidad = 1
 
 let traerPrecio;
 let traerSrc;
@@ -153,14 +154,14 @@ for (let i = 0; i < BTNAGREGARALCART.length; i++) {
         imagendelbotonmenu = clicimagen[i].src;//esta es la ruta del src de la imagen del plato seleccionado
         precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
 
-       menuSelected=[];
-       arrayblanco()
-       guardarenlocal()
+        menuSelected = [];
+        arrayblanco()
+        guardarenlocal()
 
-       traerDelLocal()
-console.log(traerPrecio)
-console.log(traerSrc)
-console.log(traerCantidad)
+        traerDelLocal()
+        console.log(traerPrecio)
+        console.log(traerSrc)
+        console.log(traerCantidad)
 
 
 
@@ -185,23 +186,23 @@ console.log(traerCantidad)
 
 
 ///////////////////////////////trabajar con los datos para el carro 
-function arrayblanco(){
-    menuSelected=[ precioDeMenus ,  imagendelbotonmenu ,cantidad]
+function arrayblanco() {
+    menuSelected = [precioDeMenus, imagendelbotonmenu, cantidad]
 }
 
-function guardarenlocal(){
-    menuAddLocal.push({precio: menuSelected[0], srcimagen:menuSelected[1],cantidad:menuSelected[2]})
+function guardarenlocal() {
+    menuAddLocal.push({ precio: menuSelected[0], srcimagen: menuSelected[1], cantidad: menuSelected[2] })
     localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
 }
 
-function traerDelLocal(){
+function traerDelLocal() {
     let sacarUltimoValor
-let arrayDelLocal = JSON.parse(localStorage.getItem('contenido'));
-sacarUltimoValor=arrayDelLocal[arrayDelLocal.length-1];
+    let arrayDelLocal = JSON.parse(localStorage.getItem('contenido'));
+    sacarUltimoValor = arrayDelLocal[arrayDelLocal.length - 1];
 
-traerPrecio=sacarUltimoValor.precio;
-traerSrc=sacarUltimoValor.srcimagen;
-traerCantidad=sacarUltimoValor.cantidad
+    traerPrecio = sacarUltimoValor.precio;
+    traerSrc = sacarUltimoValor.srcimagen;
+    traerCantidad = sacarUltimoValor.cantidad
 
 }
 
@@ -274,6 +275,8 @@ function createcarro() {
     div.className = "product-shop"
     shopping.appendChild(div)
 
+    // divFinal.replaceChild(div);
+
     imagen = document.createElement("img")
     imagen.className = "img-select"
     imagen.src = traerSrc
@@ -324,19 +327,39 @@ function createcarro() {
             multiplicar()
         }
         pasta.textContent = preciodelspandelcarrito + '€';
-       
+
     })
-    
+
     function multiplicar() {
-        preciodelspandelcarrito=(parseFloat(cantidad.value) * parseFloat(traerPrecio));
+        preciodelspandelcarrito = (parseFloat(cantidad.value) * parseFloat(traerPrecio));
     }
 }
 
-
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
 
+const btnCesta = document.querySelector("#btn-carrito");
+
+if (btnCesta) {
+    btnCesta.addEventListener("click", () => {
+
+        sumarItemCart();
+
+        location.href = 'factura.html'
+    });
+}
 
 
+function sumarItemCart() {
+
+    let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
+    let filtrisrc = traerCarrito.filter(a => a.srcimagen > '0')
+    console.log(filtrisrc);
+
+    for(let i = 0; i<filtrisrc.length ; i++){
+        listPedido.textContent= "Algo";
+    }
+
+}
 
 
 
