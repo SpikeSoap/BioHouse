@@ -49,7 +49,11 @@ let arrayprecios = new Array()
 let arrayplatos = new Array()
 let imagendelbotonmenu;
 let preciodelbotonmenu;
-let cantidaddeplatosseleccionados = 0;
+let precioDeMenus = 0;
+let contador=0
+let menuSelected=[];
+let menuAddLocal=[];
+let cantidad=1
 
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
@@ -141,8 +145,17 @@ addEventListener("load", () => {
 
 for (let i = 0; i < clicimagen.length; i++) {
     clicimagen[i].addEventListener("click", () => {
-        imagendelbotonmenu = clicimagen[i].src;
-        cantidaddeplatosseleccionados = preciosMenu[i].textContent
+        imagendelbotonmenu = clicimagen[i].src;//esta es la ruta del src de la imagen del plato seleccionado
+        precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
+
+       menuSelected=[];
+       arrayblanco()
+       
+       
+        menuAddLocal.push({precio: menuSelected[0], srcimagen:menuSelected[1],cantidad:menuSelected[2]})
+        localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
+       
+        console.log(menuSelected)
 
 
 
@@ -153,13 +166,14 @@ for (let i = 0; i < clicimagen.length; i++) {
         for (let i = 0; i < preciosMenu.length; i++) {
 
         }
+
         if (contcarrito.style.width == "0%") {
             contcarrito.style.visibility = "visible"
             contcarrito.style.width = "20%"
             visualizar.style.display = "block"
         }
 
-        createcarro()
+        // createcarro()
     })
 }
 
@@ -291,3 +305,17 @@ function createcarro() {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////trabajar con los datos para el carro
+function arrayblanco(){
+    menuSelected=[ precioDeMenus ,  imagendelbotonmenu ,cantidad]
+}
