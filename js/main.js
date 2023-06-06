@@ -45,7 +45,7 @@ const addToCart=document.querySelectorAll('.btn-agregar-car');
 
 
 let arrayimg = [];
-let varquerecogevalordelbotonmenu;
+let getValueBtnMenu;
 let insertarimg;
 let arrayprecios = new Array()
 let arrayplatos = new Array()
@@ -66,11 +66,13 @@ let traerCantidad;
 
 for (let i = 0; i < hacerclic.length; i++) {
     hacerclic[i].addEventListener('click', () => {
-        varquerecogevalordelbotonmenu = valordeetiquetap[i].textContent
-        localStorage.setItem("contenido", JSON.stringify(varquerecogevalordelbotonmenu));
+        getValueBtnMenu = valordeetiquetap[i].textContent
+        localStorage.setItem("contenido", JSON.stringify(getValueBtnMenu));
         localStorage.setItem("imagenes", JSON.stringify(arrayimg));
         location.href = 'html/menus.html'
     })
+    for (let i = 0; i < valordeetiquetap.length; i++) {
+    }
 }
 ////////////////////////////insertar los menus en la pagina menus si se cumple la condicion////////////////////////
 
@@ -127,24 +129,15 @@ function empezar() {
 /////////////////////// funcion para insertar los diferentes menus//////////////////////////////////////////////
 
 function insertar() {
+    let prueba = JSON.parse(localStorage.getItem("imagenes"));
     for (let i = 0; i < imagenvacia.length; i++) {
-        imagenvacia[i].src = arrayimg[i]
+        imagenvacia[i].src = prueba[i]
     }
+    for (let i = 0; i < prueba.length; i++) {
+    }
+    console.log(prueba)
 }
 
-////////////////////////////////////////////////recorriendo arrays/////////////////////////////////////////
-
-addEventListener("load", () => {
-    for (let i = 0; i < valordeetiquetap.length; i++) {
-    }
-})
-
-
-
-addEventListener("load", () => {
-    for (let i = 0; i < arrayimg.length; i++) {
-    }
-})
 
 //////////////enviar al carro, coger src de imagen, envian precio al span /////////////////////
 
@@ -158,14 +151,11 @@ for (let i = 0; i < addToCart.length; i++) {
        arrayblanco()
        guardarenlocal()
 
-        traerDelLocal()
-        console.log(traerPrecio)
-        console.log(traerSrc)
-        console.log(traerCantidad)
-
-
+       traerDelLocal()
+       
         let contcarrito = document.getElementById('carrito')
         let visualizar = document.getElementById('inf-primerafila-cart')
+
         if (contcarrito.style.width == "0%") {
             contcarrito.style.visibility = "visible"
             contcarrito.style.width = "20%"
@@ -334,8 +324,20 @@ if (btnCesta) {
 
         sumarItemCart();
 
-        location.href = 'factura.html'
+        // location.href = 'factura.html'
     });
+}
+
+function sumarItemCart() {
+
+    let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
+    let filtrisrc = traerCarrito.filter(a => a.srcimagen > '0')
+    console.log(filtrisrc);
+
+    // for(let i = 0; i<filtrisrc.length ; i++){
+    //     listPedido.textContent= "Algo";
+    // }
+
 }
 
 
