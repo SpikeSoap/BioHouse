@@ -179,7 +179,7 @@ console.log(traerCantidad)
             visualizar.style.display = "block"
         }
 
-        // createcarro()
+        createcarro()
     })
 }
 
@@ -276,12 +276,12 @@ function createcarro() {
 
     imagen = document.createElement("img")
     imagen.className = "img-select"
-    imagen.src = imagendelbotonmenu
+    imagen.src = traerSrc
     div.appendChild(imagen)
 
     pasta = document.createElement("span")
     pasta.className = "precio-art-carrito"
-    pasta.textContent = cantidaddeplatosseleccionados + '€'
+    pasta.textContent = traerPrecio + '€'
     div.appendChild(pasta)
 
     div2 = document.createElement("div")
@@ -328,7 +328,7 @@ function createcarro() {
     })
     
     function multiplicar() {
-        preciodelspandelcarrito=(parseFloat(cantidad.value) * parseFloat(cantidaddeplatosseleccionados));
+        preciodelspandelcarrito=(parseFloat(cantidad.value) * parseFloat(traerPrecio));
     }
 }
 
