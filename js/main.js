@@ -43,7 +43,7 @@ const BTNAGREGARALCART=document.querySelectorAll('.btn-agregar-car');
 
 
 
-let arrayimg = new Array();
+let arrayimg = [];
 let varquerecogevalordelbotonmenu;
 let insertarimg;
 let arrayprecios = new Array()
@@ -170,6 +170,9 @@ console.log(traerCantidad)
 
 
         for (let i = 0; i < preciosMenu.length; i++) {
+
+        }
+        for (let i = 0; i < clicimagen.length; i++) {
 
         }
 
@@ -311,7 +314,6 @@ function createcarro() {
     /////////////////funcion donde borrar y coger valores del carro, no funciona en mas ningun lado//////////
 
     //   let preciodelspandelcarrito=new Array()
-    let preciodelspandelcarrito;
     carrito.addEventListener('click', e => {
 
         if (e.target == borrar) {
