@@ -143,10 +143,6 @@ function insertar() {
     
 }
 
-addEventListener("load" , () => {
-    console.log(arrayimg)
-})
-
 
 //////////////enviar al carro, coger src de imagen, envian precio al span /////////////////////
 
@@ -276,6 +272,7 @@ function createcarro() {
     pasta = document.createElement("span")
     pasta.className = "precio-art-carrito"
     pasta.textContent = traerPrecio + '€'
+    pasta.value=traerPrecio
     div.appendChild(pasta)
 
     div2 = document.createElement("div")
@@ -305,6 +302,7 @@ function createcarro() {
     /////////////////funcion donde borrar y coger valores del carro, no funciona en mas ningun lado//////////
 
     //   let preciodelspandelcarrito=new Array()
+    let savePrice=pasta.value
     carrito.addEventListener('click', e => {
 
         if (e.target == borrar) {
@@ -315,13 +313,19 @@ function createcarro() {
     carrito.addEventListener('change', e => {
         if (e.target == cantidad) {
             
-                pasta.textContent=(parseFloat(cantidad.value) * parseFloat(pasta.textContent)+ '€');
-            
-        }
-       
+                pasta.textContent=(parseFloat(savePrice) * parseFloat(cantidad.value)+ '€');
+        }   /////esto fue arreglado
     })
-    
+
+    carrito.addEventListener('change', e => {
+        if (e.target == cantidad) {
+            
+                pasta.textContent=(parseInt(cantidad.value) * parseFloat(savePrice)+ '€');
+        }
+    })
+
 }
+
 
 
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
@@ -349,6 +353,12 @@ function sumarItemCart() {
 
 }
 
+// function renderCart(){
+//     let baseDatosarrito = JSON.parse(localStorage.getItem("contenido"));
+
+//         console.log(baseDatosarrito)
+  
+// }
 
 
 
