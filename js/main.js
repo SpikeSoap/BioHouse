@@ -1,27 +1,3 @@
-// ////yusra dark mode////
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     let body = document.body;
-//     const btn = document.getElementById('toggle-dark-mode');
-
-//     // Ajouter un bouton pour changer de mode
-//     btn.addEventListener('click', function() {
-//       body.classList.toggle('dark-mode');
-//     });
-
-//     // Ajouter un style pour le mode sombre
-//     var style = document.createElement('style');
-//     style.innerHTML = `
-//       body.dark-mode {
-//         background-color: #333;
-//         color: #fff;
-//       }
-//     `;
-//     document.head.appendChild(style);
-//   });
-
-
-
 
 
 
@@ -73,7 +49,15 @@ let arrayprecios = new Array()
 let arrayplatos = new Array()
 let imagendelbotonmenu;
 let preciodelbotonmenu;
-let cantidaddeplatosseleccionados = 0;
+let precioDeMenus = 0;
+let contador=0
+let menuSelected=[];
+let menuAddLocal=[];
+let cantidad=1
+
+let traerPrecio;
+let traerSrc;
+let traerCantidad;
 
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
@@ -165,8 +149,17 @@ addEventListener("load", () => {
 
 for (let i = 0; i < clicimagen.length; i++) {
     clicimagen[i].addEventListener("click", () => {
-        imagendelbotonmenu = clicimagen[i].src;
-        cantidaddeplatosseleccionados = preciosMenu[i].textContent
+        imagendelbotonmenu = clicimagen[i].src;//esta es la ruta del src de la imagen del plato seleccionado
+        precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
+
+       menuSelected=[];
+       arrayblanco()
+       guardarenlocal()
+
+       traerDelLocal()
+console.log(traerPrecio)
+console.log(traerSrc)
+console.log(traerCantidad)
 
 
 
@@ -177,16 +170,38 @@ for (let i = 0; i < clicimagen.length; i++) {
         for (let i = 0; i < preciosMenu.length; i++) {
 
         }
+
         if (contcarrito.style.width == "0%") {
             contcarrito.style.visibility = "visible"
             contcarrito.style.width = "20%"
             visualizar.style.display = "block"
         }
 
-        createcarro()
+        // createcarro()
     })
 }
 
+
+///////////////////////////////trabajar con los datos para el carro 
+function arrayblanco(){
+    menuSelected=[ precioDeMenus ,  imagendelbotonmenu ,cantidad]
+}
+
+function guardarenlocal(){
+    menuAddLocal.push({precio: menuSelected[0], srcimagen:menuSelected[1],cantidad:menuSelected[2]})
+    localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
+}
+
+function traerDelLocal(){
+    let sacarUltimoValor
+let arrayDelLocal = JSON.parse(localStorage.getItem('contenido'));
+sacarUltimoValor=arrayDelLocal[arrayDelLocal.length-1];
+
+traerPrecio=sacarUltimoValor.precio;
+traerSrc=sacarUltimoValor.srcimagen;
+traerCantidad=sacarUltimoValor.cantidad
+
+}
 
 
 ////////////////////////////////////arrays de objetos yusra/////////////////////////////////////////
@@ -314,4 +329,19 @@ function createcarro() {
         preciodelspandelcarrito=(parseFloat(cantidad.value) * parseFloat(cantidaddeplatosseleccionados));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
