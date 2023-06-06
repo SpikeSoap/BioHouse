@@ -44,7 +44,7 @@ const BTNAGREGARALCART = document.querySelectorAll('.btn-agregar-car');
 
 
 
-let arrayimg = new Array();
+let arrayimg = [];
 let varquerecogevalordelbotonmenu;
 let insertarimg;
 let arrayprecios = new Array()
@@ -171,6 +171,9 @@ for (let i = 0; i < BTNAGREGARALCART.length; i++) {
 
 
         for (let i = 0; i < preciosMenu.length; i++) {
+
+        }
+        for (let i = 0; i < clicimagen.length; i++) {
 
         }
 
@@ -314,7 +317,6 @@ function createcarro() {
     /////////////////funcion donde borrar y coger valores del carro, no funciona en mas ningun lado//////////
 
     //   let preciodelspandelcarrito=new Array()
-    let preciodelspandelcarrito;
     carrito.addEventListener('click', e => {
 
         if (e.target == borrar) {
@@ -324,8 +326,11 @@ function createcarro() {
 
     carrito.addEventListener('change', e => {
         if (e.target == cantidad) {
-            multiplicar()
+            
+                pasta.textContent=(parseFloat(cantidad.value) * parseFloat(pasta.textContent)+ '€');
+            
         }
+
         pasta.textContent = preciodelspandelcarrito + '€';
 
     })
@@ -333,7 +338,8 @@ function createcarro() {
     function multiplicar() {
         preciodelspandelcarrito = (parseFloat(cantidad.value) * parseFloat(traerPrecio));
     }
-}
+
+
 
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
 
