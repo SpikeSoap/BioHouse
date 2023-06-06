@@ -1,27 +1,3 @@
-// ////yusra dark mode////
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     let body = document.body;
-//     const btn = document.getElementById('toggle-dark-mode');
-
-//     // Ajouter un bouton pour changer de mode
-//     btn.addEventListener('click', function() {
-//       body.classList.toggle('dark-mode');
-//     });
-
-//     // Ajouter un style pour le mode sombre
-//     var style = document.createElement('style');
-//     style.innerHTML = `
-//       body.dark-mode {
-//         background-color: #333;
-//         color: #fff;
-//       }
-//     `;
-//     document.head.appendChild(style);
-//   });
-
-
-
 
 
 
