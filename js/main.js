@@ -66,7 +66,7 @@ let traerCantidad;
 for (let i = 0; i < clicBtnMenu.length; i++) {
     clicBtnMenu[i].addEventListener('click', () => {
         getValueBtnMenu = valordeetiquetap[i].textContent
-        localStorage.setItem("contenido", JSON.stringify(getValueBtnMenu));
+        localStorage.setItem("textomenu", JSON.stringify(getValueBtnMenu));
         localStorage.setItem("imagenes", JSON.stringify(arrayimg));
         location.href = 'html/menus.html'
     })
@@ -77,7 +77,7 @@ for (let i = 0; i < clicBtnMenu.length; i++) {
 
 addEventListener("load", empezar)
 function empezar() {
-    let tipoDeMenu = JSON.parse(localStorage.getItem("contenido"));
+    let tipoDeMenu = JSON.parse(localStorage.getItem("textomenu"));
     insertarimg = tipoDeMenu;
 
     asigprecioplatos()
@@ -128,14 +128,24 @@ function empezar() {
 /////////////////////// funcion para insertar los diferentes menus//////////////////////////////////////////////
 
 function insertar() {
-    let prueba = JSON.parse(localStorage.getItem("imagenes"));
+                            
+                        ///aqui hay dos opciones una de ellas es traer el array de fotos del local
+
+    // let srcDelLocal = JSON.parse(localStorage.getItem("imagenes"));
     for (let i = 0; i < figPagMenu.length; i++) {
-        figPagMenu[i].src = prueba[i]
+        // figPagMenu[i].src = srcDelLocal[i]
+        figPagMenu[i].src = arrayimg[i]  
     }
-    for (let i = 0; i < prueba.length; i++) {
+    // for (let i = 0; i < srcDelLocal.length; i++) {
+    // }
+    for (let i = 0; i < arrayimg.length; i++) {
     }
-    console.log(prueba)
+    
 }
+
+addEventListener("load" , () => {
+    console.log(arrayimg)
+})
 
 
 //////////////enviar al carro, coger src de imagen, envian precio al span /////////////////////
