@@ -344,8 +344,18 @@ if (btnCesta) {
 function sumarItemCart() {
 
     let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
-    let filtrisrc = traerCarrito.filter(a => a.srcimagen > '0')
-    console.log(filtrisrc);
+    let filtrisrc = traerCarrito.filter(a => a.srcimagen)
+    let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
+    
+    console.log(sacarPrecioTotal)
+    
+   
+    
+
+    // for(i=0; i<sacarPrecioTotal.length; i++){
+
+
+    // }
 
     // for(let i = 0; i<filtrisrc.length ; i++){
     //     listPedido.textContent= "Algo";
