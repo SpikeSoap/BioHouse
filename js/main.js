@@ -38,6 +38,7 @@ const preciosMenu = document.querySelectorAll(".precio");
 const recorrercarrito = document.getElementById("carrito");
 const shopping = document.querySelector(".menu-shop")
 const totalgeneral = document.getElementById('monto-total')
+const BTNAGREGARALCART=document.querySelectorAll('.btn-agregar-car'); 
 
 
 
@@ -147,8 +148,8 @@ addEventListener("load", () => {
 //////////////enviar al carro, coger src de imagen, envian precio al span /////////////////////
 
 
-for (let i = 0; i < clicimagen.length; i++) {
-    clicimagen[i].addEventListener("click", () => {
+for (let i = 0; i < BTNAGREGARALCART.length; i++) {
+    BTNAGREGARALCART[i].addEventListener("click", () => {
         imagendelbotonmenu = clicimagen[i].src;//esta es la ruta del src de la imagen del plato seleccionado
         precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
 
@@ -160,6 +161,7 @@ for (let i = 0; i < clicimagen.length; i++) {
 console.log(traerPrecio)
 console.log(traerSrc)
 console.log(traerCantidad)
+
 
 
 
