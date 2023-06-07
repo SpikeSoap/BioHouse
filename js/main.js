@@ -320,7 +320,7 @@ function createcarro() {
     carrito.addEventListener('change', e => {
         if (e.target == cantidad) {
             
-                pasta.textContent=(parseInt(cantidad.value) * parseFloat(savePrice)+ '€');
+                pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2)+ '€');
         }
     })
 
@@ -348,8 +348,8 @@ function sumarItemCart() {
     let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
     // let suma=traerCarrito
     
-    let sumartotal=sacarPrecioTotal.reduce((a,b)=>a + b.precio ,0) ;
-    console.log(sumartotal)
+    let sumartotal= sacarPrecioTotal.reduce((a,b )=>parseFloat(a)  +parseFloat (b.precio) ,0) ;
+    console.log(sumartotal.toFixed(2))
     
    
     
