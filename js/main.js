@@ -40,6 +40,7 @@ const listPedido = document.querySelector(".list-pedido");
 const totalgeneral = document.getElementById('monto-total')
 const addToCart=document.querySelectorAll('.btn-agregar-car'); 
 let montoTotal=document.getElementById('precio-total-carro')
+const vercarrito=document.querySelectorAll('.menu-shop'); 
 
 
 
@@ -55,7 +56,6 @@ let contador = 0
 let menuSelected = [];
 let menuAddLocal = [];
 let cantidad = 1
-
 let traerPrecio;
 let traerSrc;
 let traerCantidad;
@@ -157,6 +157,9 @@ for (let i = 0; i < addToCart.length; i++) {
        guardarenlocal()
        sumaTotalGeneral()
        traerDelLocal()
+
+       localStorage.setItem("saveCart", JSON.stringify(vercarrito));
+       console.log(vercarrito)
        
         let contcarrito = document.getElementById('carrito')
         let visualizar = document.getElementById('inf-primerafila-cart')
@@ -314,6 +317,7 @@ function createcarro() {
         if (e.target == cantidad) {
             
                 pasta.textContent=(parseFloat(savePrice) * parseFloat(cantidad.value)+ '€');
+                sumaTotalGeneral()
         }   /////esto fue arreglado
     })
 
@@ -348,7 +352,7 @@ if (btnCesta) {
 
         sumarItemCart();
 
-        // location.href = 'factura.html'
+        location.href = 'factura.html'
     });
 }
 
