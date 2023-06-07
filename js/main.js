@@ -39,7 +39,7 @@ const shopping = document.querySelector(".menu-shop")
 const listPedido = document.querySelector(".list-pedido");
 const totalgeneral = document.getElementById('monto-total')
 const addToCart=document.querySelectorAll('.btn-agregar-car'); 
-
+let montoTotal=document.getElementById('precio-total-carro')
 
 
 
@@ -155,7 +155,7 @@ for (let i = 0; i < addToCart.length; i++) {
        menuSelected=[];
        arrayblanco()
        guardarenlocal()
-
+       sumaTotalGeneral()
        traerDelLocal()
        
         let contcarrito = document.getElementById('carrito')
@@ -327,6 +327,17 @@ function createcarro() {
 }
 
 
+/////////////////////////////sumar total general/////////////////////////
+
+function sumaTotalGeneral(){
+    let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
+    let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
+    
+    let sumartotal= sacarPrecioTotal.reduce((a,b )=>parseFloat(a)  +parseFloat (b.precio) ,0) ;
+    montoTotal.textContent=sumartotal.toFixed(2)
+}
+
+
 
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
 
@@ -345,14 +356,9 @@ function sumarItemCart() {
 
     let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
     let filtrisrc = traerCarrito.filter(a => a.srcimagen)
-    let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
     // let suma=traerCarrito
     
-    let sumartotal= sacarPrecioTotal.reduce((a,b )=>parseFloat(a)  +parseFloat (b.precio) ,0) ;
-    console.log(sumartotal.toFixed(2))
-    
    
-    
 
     // for(i=0; i<sacarPrecioTotal.length; i++){
 
@@ -371,6 +377,7 @@ function sumarItemCart() {
 //         console.log(baseDatosarrito)
   
 // }
+
 
 
 
