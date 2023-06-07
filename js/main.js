@@ -40,7 +40,7 @@ const listPedido = document.querySelector(".list-pedido");
 const totalgeneral = document.getElementById('monto-total')
 const addToCart=document.querySelectorAll('.btn-agregar-car'); 
 let montoTotal=document.getElementById('precio-total-carro')
-const vercarrito=document.querySelectorAll('.menu-shop'); 
+
 
 
 
@@ -55,10 +55,12 @@ let precioDeMenus = 0;
 let contador = 0
 let menuSelected = [];
 let menuAddLocal = [];
+let cambioCantidad=[]
 let cantidad = 1
 let traerPrecio;
 let traerSrc;
 let traerCantidad;
+let cont=0
 
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
@@ -158,8 +160,6 @@ for (let i = 0; i < addToCart.length; i++) {
        sumaTotalGeneral()
        traerDelLocal()
 
-       localStorage.setItem("saveCart", JSON.stringify(vercarrito));
-       console.log(vercarrito)
        
         let contcarrito = document.getElementById('carrito')
         let visualizar = document.getElementById('inf-primerafila-cart')
@@ -181,7 +181,8 @@ function arrayblanco() {
 }
 
 function guardarenlocal() {
-    menuAddLocal.push({ precio: menuSelected[0], srcimagen: menuSelected[1], cantidad: menuSelected[2] })
+   
+    menuAddLocal.push({id: cont++, precio: menuSelected[0], srcimagen: menuSelected[1], cantidad: menuSelected[2] })
     localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
 }
 
@@ -259,10 +260,12 @@ function createcarro() {
     let borrar
     let div2
     let opciones
+    let idDiv
 
 
     div = document.createElement("div")
     div.className = "product-shop"
+    div.id=contador++
     shopping.appendChild(div)
 
     // divFinal.replaceChild(div);
@@ -316,17 +319,51 @@ function createcarro() {
     carrito.addEventListener('change', e => {
         if (e.target == cantidad) {
             
-                pasta.textContent=(parseFloat(savePrice) * parseFloat(cantidad.value)+ '€');
+            pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2)+ '€');
+
                 sumaTotalGeneral()
         }   /////esto fue arreglado
     })
 
-    carrito.addEventListener('change', e => {
+
+    carrito.addEventListener('click', e => {
+
+        // let prueba=pasta.textContent
         if (e.target == cantidad) {
+                idDiv=div.id
             
-                pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2)+ '€');
-        }
+
+            cambioCantidad.push({costo: pasta.textContent})
+            localStorage.setItem("cambiosCantidad", JSON.stringify(cambioCantidad));
+
+            let valorUltimo
+            let changeMonto = JSON.parse(localStorage.getItem('cambiosCantidad'));
+            valorUltimo=changeMonto[changeMonto.length - 1];
+
+         
+            let abc = JSON.parse(localStorage.getItem('contenido'));
+
+      
+            let found = abc.find(a => a.id==idDiv )
+            found.precio=valorUltimo
+          
+         
+
+            
+           
+          
+            console.log(menuAddLocal)
+            console.log(found)
+            // menuAddLocal.push({precio: valorUltimo})
+            
+
+            
+
+
+
+        }   /////esto para agregar otros valores
     })
+ 
 
 }
 
@@ -334,11 +371,13 @@ function createcarro() {
 /////////////////////////////sumar total general/////////////////////////
 
 function sumaTotalGeneral(){
+    let sumaCarrito
     let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
     let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
     
     let sumartotal= sacarPrecioTotal.reduce((a,b )=>parseFloat(a)  +parseFloat (b.precio) ,0) ;
-    montoTotal.textContent=sumartotal.toFixed(2)
+    sumaCarrito=sumartotal
+    montoTotal.textContent=sumaCarrito.toFixed(2)
 }
 
 
