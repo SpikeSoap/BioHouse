@@ -40,6 +40,7 @@ const listPedido = document.querySelector(".list-pedido");
 const totalgeneral = document.getElementById('monto-total')
 const addToCart=document.querySelectorAll('.btn-agregar-car'); 
 let montoTotal=document.getElementById('precio-total-carro')
+let container=document.querySelectorAll('.cont-de-menus')
 
 
 
@@ -59,9 +60,11 @@ let reemplazoDelLocal=[];
 let cambioCantidad=[];
 let modificadoLocal=[];
 let cantidad = 1;
+let recogerIdDiv
 let traerPrecio;
 let traerSrc;
 let traerCantidad;
+let traerId;
 let cont=0;
 let clonarEnLocal;
 
@@ -147,7 +150,6 @@ function insertar() {
     
 }
 
-
 //////////////enviar al carro, coger src de imagen, envian precio al span /////////////////////
 
 
@@ -155,16 +157,15 @@ for (let i = 0; i < addToCart.length; i++) {
     addToCart[i].addEventListener("click", () => {
         imagendelbotonmenu = figPagMenu[i].src;//esta es la ruta del src de la imagen del plato seleccionado
         precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
+        recogerIdDiv=container[i].id
 
-
+       
        arrayblanco()
        guardarenlocal()
        sumaTotalGeneral()
-       traerDelLocal()
+        traerDelLocal()
 
-console.log(clonarEnLocal)
-       
-       
+    
         let contcarrito = document.getElementById('carrito')
         let visualizar = document.getElementById('inf-primerafila-cart')
 
@@ -176,19 +177,22 @@ console.log(clonarEnLocal)
      
         createcarro()
          localStorage.removeItem('modificado')
-         
     })
 }
 
 
+for(i=0; i<container.length;i++){
+   
+ }
+
 ///////////////////////////////trabajar con los datos para el carro 
 function arrayblanco() {
-    menuSelected = [precioDeMenus, imagendelbotonmenu, cantidad]
+    menuSelected = [precioDeMenus, imagendelbotonmenu, cantidad ,recogerIdDiv]
 }
 
 function guardarenlocal() {
    
-    menuAddLocal.push({id: cont++, precio: menuSelected[0], srcimagen: menuSelected[1], cantidad: menuSelected[2] })
+    menuAddLocal.push({id: menuSelected[3], precio: menuSelected[0], srcimagen: menuSelected[1], cantidad: menuSelected[2] })
     localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
 
     ////////Aqui en la clonacion del local meto tambien el ultimo valor q entro al carro
@@ -201,12 +205,13 @@ function guardarenlocal() {
 
 function traerDelLocal() {
     let sacarUltimoValor
-    let arrayDelLocal = JSON.parse(localStorage.getItem('contenido'));
+    let arrayDelLocal = JSON.parse(localStorage.getItem('contenidoModificado'));
     sacarUltimoValor = arrayDelLocal[arrayDelLocal.length - 1];
 
     traerPrecio = sacarUltimoValor.precio;
     traerSrc = sacarUltimoValor.srcimagen;
-    traerCantidad = sacarUltimoValor.cantidad
+    traerCantidad = sacarUltimoValor.cantidad;
+    traerId=sacarUltimoValor.id;
 
 }
 
@@ -282,7 +287,7 @@ function createcarro() {
 
     div = document.createElement("div")
     div.className = "product-shop"
-    div.id=contador++
+    div.id=recogerIdDiv
     shopping.appendChild(div)
 
 
@@ -325,32 +330,34 @@ function createcarro() {
     /////////////////funcion donde borrar y coger valores del carro, no funciona en mas ningun lado//////////
 
 
-  
     carrito.addEventListener('click', e => {
 
         if (e.target ==borrar) {                //////////borrar carro
             shopping.removeChild(div)
-            idDel=parseInt(borrar.alt)
+            idDel=borrar.alt
 
             console.log(idDel)
 
-            localStorage.removeItem('contenidoModificado','id:2')
-            // localDelete = reemplazoDelLocal.filter(item => item.id!==idDel)
-            // localStorage.setItem('contenidoModificado', JSON.stringify(localDelete));
+           
+            let localDeleteClone
+            localDeleteClone=JSON.parse(localStorage.getItem('contenidoModificado'));
+            localDeleteClone =localDeleteClone.filter(item => item.id!==idDel)
+            localStorage.setItem('contenidoModificado', JSON.stringify(localDeleteClone));
+            console.log(localDeleteClone)
 
 
-            // let localDelete
-            // localDelete=JSON.parse(localStorage.getItem('contenidoModificado'));
-            // localDelete = reemplazoDelLocal.filter(item => item.id!==idDel)
-            // localStorage.setItem('contenidoModificado', JSON.stringify(localDelete));
-
+            let localDelete
+            localDelete=JSON.parse(localStorage.getItem('contenido'));
+            localDelete =localDeleteClone.filter(item => item.id!==idDel)
+            localStorage.setItem('contenido', JSON.stringify(localDelete));
+            console.log(localDelete)
         }
     })
 
     carrito.addEventListener('click', e => {
         if (e.target == cantidad) {
             savePrice=pasta.value
-            idDiv=parseInt(div.id)
+            idDiv=div.id
 
            
             reemplazoDelLocal=JSON.parse(localStorage.getItem('contenidoModificado'));
@@ -359,9 +366,7 @@ function createcarro() {
             console.log(reemplazoDelLocal)
 
             localReemplazo()
-           
             localAsignar()
-
             sumaTotalGeneral()  
         }   
     })
