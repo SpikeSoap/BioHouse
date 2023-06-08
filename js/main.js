@@ -55,8 +55,9 @@ let precioDeMenus = 0;
 let contador = 0
 let menuSelected = [];
 let menuAddLocal = [];
-let modificadoAddLocal=[]
+let reemplazoDelLocal=[]
 let cambioCantidad=[]
+let modificadoLocal=[]
 let cantidad = 1
 let traerPrecio;
 let traerSrc;
@@ -255,8 +256,10 @@ function recorrerprecios() {
 
 ////////carrito crear y eliminar/////////
 let idDiv
-let valorUltimo
+let prua
 let savePrice
+let traerCarrito
+let valorUltimo
 
 function createcarro() {
     let div
@@ -266,7 +269,7 @@ function createcarro() {
     let borrar
     let div2
     let opciones
-  
+   
 
 
     div = document.createElement("div")
@@ -313,7 +316,7 @@ function createcarro() {
     /////////////////funcion donde borrar y coger valores del carro, no funciona en mas ningun lado//////////
 
 
-    savePrice=pasta.value
+  
     carrito.addEventListener('click', e => {
 
         if (e.target == borrar) {                //////////borrar carro
@@ -321,38 +324,46 @@ function createcarro() {
         }
     })
 
+    carrito.addEventListener('click', e => {
+        if (e.target == cantidad) {
+            savePrice=pasta.value
+            idDiv=parseInt(div.id)
+
+            reemplazoDelLocal = menuAddLocal.filter(item => item.id!==idDiv)
+            localStorage.setItem('contenido', JSON.stringify(reemplazoDelLocal));
+           
+            localReemplazo()
+           
+            localAsignar()
+        }   
+    })
+
     carrito.addEventListener('change', e => {
-        if (e.target == cantidad) {                    ///////sumar precio por cant prod
+        if (e.target == cantidad) {    
             
             pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2)+ '€');
 
-              idDiv=parseInt(div.id)
-            
             cambioCantidad.push(pasta.textContent)
             localStorage.setItem("cambiosCantidad", JSON.stringify(cambioCantidad));
 
             let changeMonto = JSON.parse(localStorage.getItem('cambiosCantidad'));
             valorUltimo=changeMonto[changeMonto.length - 1];
 
-                sumaTotalGeneral()    
+            console.log(valorUltimo)
+            sumaTotalGeneral()  
+
+           
+           
         } 
     })
-
-
-    carrito.addEventListener('click', e => {
-        if (e.target == cantidad) {
-            
-            localReemplazo()
-        }   
-    })
+    
 }
 
 
 /////////////////////////////sumar total general/////////////////////////
-
+let sumaCarrito
 function sumaTotalGeneral(){
-    let sumaCarrito
-    let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
+    traerCarrito = JSON.parse(localStorage.getItem("contenido"));
     let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
     
     let sumartotal= sacarPrecioTotal.reduce((a,b )=>parseFloat(a)  +parseFloat (b.precio) ,0) ;
@@ -362,24 +373,16 @@ function sumaTotalGeneral(){
 
 //////////////////////////reemplazar en el local
 
-// function localEliminarObjet(){
-    
-// }
-
-
 
 function localReemplazo(){
-
-    modificadoAddLocal=JSON.parse(localStorage.getItem('contenido'))
-
-    modificadoAddLocal.push({id: idDiv, precio: valorUltimo, srcimagen: menuSelected[1], cantidad: menuSelected[2] })
-    localStorage.setItem('contenido', JSON.stringify(modificadoAddLocal));
-
-    console.logo(modificadoAddLocal)
-    
+    modificadoLocal=JSON.parse(localStorage.getItem("contenido"));
 }
 
-
+function localAsignar(){
+    
+    modificadoLocal.push({id: idDiv, precio: valorUltimo, srcimagen: menuSelected[1], cantidad: menuSelected[2] })
+    localStorage.setItem('contenido', JSON.stringify(modificadoLocal));
+}
 
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
 
@@ -387,9 +390,7 @@ const btnCesta = document.querySelector("#btn-carrito");
 
 if (btnCesta) {
     btnCesta.addEventListener("click", () => {
-
         sumarItemCart();
-
         location.href = 'factura.html'
     });
 }
