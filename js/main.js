@@ -47,23 +47,23 @@ let montoTotal=document.getElementById('precio-total-carro')
 let arrayimg = [];
 let getValueBtnMenu;
 let insertarimg;
-let arrayprecios = new Array()
-let arrayplatos = new Array()
+let arrayprecios = new Array();
+let arrayplatos = new Array();
 let imagendelbotonmenu;
 let preciodelbotonmenu;
 let precioDeMenus = 0;
-let contador = 0
+let contador = 0;
 let menuSelected = [];
 let menuAddLocal = [];
-let reemplazoDelLocal=[]
-let cambioCantidad=[]
-let modificadoLocal=[]
-let cantidad = 1
+let reemplazoDelLocal=[];
+let cambioCantidad=[];
+let modificadoLocal=[];
+let cantidad = 1;
 let traerPrecio;
 let traerSrc;
 let traerCantidad;
-let cont=0
-
+let cont=0;
+let clonarEnLocal;
 
 /////////////////////////////////////recoger valores de los menus////////////////////////////////////////
 
@@ -156,12 +156,13 @@ for (let i = 0; i < addToCart.length; i++) {
         imagendelbotonmenu = figPagMenu[i].src;//esta es la ruta del src de la imagen del plato seleccionado
         precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
 
+
        arrayblanco()
        guardarenlocal()
        sumaTotalGeneral()
        traerDelLocal()
 
-
+console.log(clonarEnLocal)
        
        
         let contcarrito = document.getElementById('carrito')
@@ -189,6 +190,13 @@ function guardarenlocal() {
    
     menuAddLocal.push({id: cont++, precio: menuSelected[0], srcimagen: menuSelected[1], cantidad: menuSelected[2] })
     localStorage.setItem("contenido", JSON.stringify(menuAddLocal));
+
+    ////////Aqui en la clonacion del local meto tambien el ultimo valor q entro al carro
+
+    clonarEnLocal=JSON.parse(localStorage.getItem('contenido'));
+    clonarEnLocal=menuAddLocal[menuAddLocal.length - 1];
+    modificadoLocal.push(clonarEnLocal)
+    localStorage.setItem("contenidoModificado", JSON.stringify(modificadoLocal));
 }
 
 function traerDelLocal() {
@@ -257,6 +265,7 @@ function recorrerprecios() {
 
 ////////carrito crear y eliminar/////////
 let idDiv
+let idDel
 let prua
 let savePrice
 let traerCarrito
@@ -270,8 +279,6 @@ function createcarro() {
     let borrar
     let div2
     let opciones
-   
-
 
     div = document.createElement("div")
     div.className = "product-shop"
@@ -310,6 +317,7 @@ function createcarro() {
 
     borrar = document.createElement('img')
     borrar.className = 'btn-clear'
+    borrar.alt=div.id
     borrar.src = '../images/papelera.png'
     div2.appendChild(borrar)
 
@@ -320,8 +328,22 @@ function createcarro() {
   
     carrito.addEventListener('click', e => {
 
-        if (e.target == borrar) {                //////////borrar carro
+        if (e.target ==borrar) {                //////////borrar carro
             shopping.removeChild(div)
+            idDel=parseInt(borrar.alt)
+
+            console.log(idDel)
+
+            localStorage.removeItem('contenidoModificado','id:2')
+            // localDelete = reemplazoDelLocal.filter(item => item.id!==idDel)
+            // localStorage.setItem('contenidoModificado', JSON.stringify(localDelete));
+
+
+            // let localDelete
+            // localDelete=JSON.parse(localStorage.getItem('contenidoModificado'));
+            // localDelete = reemplazoDelLocal.filter(item => item.id!==idDel)
+            // localStorage.setItem('contenidoModificado', JSON.stringify(localDelete));
+
         }
     })
 
@@ -330,9 +352,12 @@ function createcarro() {
             savePrice=pasta.value
             idDiv=parseInt(div.id)
 
-            reemplazoDelLocal = menuAddLocal.filter(item => item.id!==idDiv)
-            localStorage.setItem('contenido', JSON.stringify(reemplazoDelLocal));
            
+            reemplazoDelLocal=JSON.parse(localStorage.getItem('contenidoModificado'));
+            reemplazoDelLocal = reemplazoDelLocal.filter(item => item.id!==idDiv)
+            localStorage.setItem('contenidoModificado', JSON.stringify(reemplazoDelLocal));
+            console.log(reemplazoDelLocal)
+
             localReemplazo()
            
             localAsignar()
@@ -344,19 +369,16 @@ function createcarro() {
     carrito.addEventListener('change', e => {
         if (e.target == cantidad) {    
             
-            pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2)+ '€');
+            pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2));
 
-            // cambioCantidad.push(pasta.textContent)
-            // localStorage.setItem("cambiosCantidad", JSON.stringify(cambioCantidad));
+            cambioCantidad.push(pasta.textContent)
+            localStorage.setItem("cambiosCantidad", JSON.stringify(cambioCantidad));
 
-            // let changeMonto = JSON.parse(localStorage.getItem('cambiosCantidad'));
-            // valorUltimo=changeMonto[changeMonto.length - 1];
-
-
-            valorUltimo=pasta.textContent
+            let changeMonto = JSON.parse(localStorage.getItem('cambiosCantidad'));
+            valorUltimo=changeMonto[changeMonto.length - 1];
+            
+            // valorUltimo=pasta.textContent
            
-           
-
         } 
     })
     
@@ -366,7 +388,7 @@ function createcarro() {
 /////////////////////////////sumar total general/////////////////////////
 let sumaCarrito
 function sumaTotalGeneral(){
-    traerCarrito = JSON.parse(localStorage.getItem("contenido"));
+    traerCarrito = JSON.parse(localStorage.getItem("contenidoModificado"));
     let sacarPrecioTotal = traerCarrito.filter(a => a.precio)
     
     let sumartotal= sacarPrecioTotal.reduce((a,b )=>parseFloat(a)  +parseFloat (b.precio) ,0) ;
@@ -378,13 +400,13 @@ function sumaTotalGeneral(){
 
 
 function localReemplazo(){
-    modificadoLocal=JSON.parse(localStorage.getItem("contenido"));
+    modificadoLocal=JSON.parse(localStorage.getItem("contenidoModificado"));
 }
 
 function localAsignar(){
     
     modificadoLocal.push({id: idDiv, precio: valorUltimo, srcimagen: menuSelected[1], cantidad: menuSelected[2] })
-    localStorage.setItem('contenido', JSON.stringify(modificadoLocal));
+    localStorage.setItem('contenidoModificado', JSON.stringify(modificadoLocal));
 }
 
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
