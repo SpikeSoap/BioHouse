@@ -156,12 +156,13 @@ for (let i = 0; i < addToCart.length; i++) {
         imagendelbotonmenu = figPagMenu[i].src;//esta es la ruta del src de la imagen del plato seleccionado
         precioDeMenus = preciosMenu[i].textContent//este es el precio de los menus
 
-       menuSelected=[];
        arrayblanco()
        guardarenlocal()
        sumaTotalGeneral()
        traerDelLocal()
 
+
+       
        
         let contcarrito = document.getElementById('carrito')
         let visualizar = document.getElementById('inf-primerafila-cart')
@@ -335,6 +336,8 @@ function createcarro() {
             localReemplazo()
            
             localAsignar()
+
+            sumaTotalGeneral()  
         }   
     })
 
@@ -343,17 +346,17 @@ function createcarro() {
             
             pasta.textContent=((parseInt(cantidad.value) * parseFloat(savePrice)).toFixed(2)+ '€');
 
-            cambioCantidad.push(pasta.textContent)
-            localStorage.setItem("cambiosCantidad", JSON.stringify(cambioCantidad));
+            // cambioCantidad.push(pasta.textContent)
+            // localStorage.setItem("cambiosCantidad", JSON.stringify(cambioCantidad));
 
-            let changeMonto = JSON.parse(localStorage.getItem('cambiosCantidad'));
-            valorUltimo=changeMonto[changeMonto.length - 1];
+            // let changeMonto = JSON.parse(localStorage.getItem('cambiosCantidad'));
+            // valorUltimo=changeMonto[changeMonto.length - 1];
 
-            console.log(valorUltimo)
-            sumaTotalGeneral()  
 
+            valorUltimo=pasta.textContent
            
            
+
         } 
     })
     
