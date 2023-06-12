@@ -1,4 +1,6 @@
-
+const btnCesta = document.getElementById("btn-carrito");
+const cuerpofactura=document.querySelector('#pruebadelp')
+const cuerpo=document.querySelector('.list-pedido')
 
 
 ////// GORKA ///////
@@ -416,51 +418,39 @@ function localAsignar(){
 
 ////////////////////////////Propiedad de Gorka, no tocar o mueres//////////////////////////////////////////////
 
-const btnCesta = document.querySelector("#btn-carrito");
 
-if (btnCesta) {
+if(btnCesta){
     btnCesta.addEventListener("click", () => {
-        sumarItemCart();
+        sumarItemCart()
         location.href = 'factura.html'
+        
     });
 }
 
+     
+    let getCarrito
+    let filtrisrc
+    let filtrprecio
+    let localfiltrisrc
+    let localfiltrprecio
 function sumarItemCart() {
 
-    let traerCarrito = JSON.parse(localStorage.getItem("contenido"));
-    let filtrisrc = traerCarrito.filter(a => a.srcimagen)
-    // let suma=traerCarrito
-    
-   
+    getCarrito = JSON.parse(localStorage.getItem("contenido"));
+    filtrisrc = traerCarrito.map(a => a.srcimagen)
+    filtrprecio=traerCarrito.map(a => a.precio)
 
-    // for(i=0; i<sacarPrecioTotal.length; i++){
-
-
-    // }
-
-    // for(let i = 0; i<filtrisrc.length ; i++){
-    //     listPedido.textContent= "Algo";
-    // }
-
+    localStorage.setItem("rutaImg", JSON.stringify(filtrisrc));
+    localStorage.setItem("precioSave", JSON.stringify(filtrprecio));
 }
 
-// function renderCart(){
-//     let baseDatosarrito = JSON.parse(localStorage.getItem("contenido"));
+addEventListener('load',()=>{
 
-//         console.log(baseDatosarrito)
-  
-// }
+    localfiltrisrc = JSON.parse(localStorage.getItem("rutaImg"));
+    localfiltrprecio = JSON.parse(localStorage.getItem("precioSave"));
 
-
-
-
-
-
-
-
-
-
-
+    console.log(localfiltrisrc,localfiltrprecio)
+})
+    
 
 
 
