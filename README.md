@@ -16,6 +16,13 @@ Ahora, si haces click sobre cualquiera de los platos se desplegará una carrito 
 2. Abre el archivo `index.html` en tu navegador.
 3. ¡Comienza a disfrutar de las características sorprendentes!
 
+## Equipo de desarrolladores
+
+- alexgb23
+- yusra88
+- SpikeSoap 
+
+
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto conmigo en "alazgorjs@gmail.com".
